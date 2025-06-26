@@ -10,7 +10,7 @@ const AboutMe = () => {
                     <div className="about-section-left">
                         <div className="photo-wrapper ">
                             <img className="about-img "
-                                src="./FUTURE_FS_01/ProfilePic.png" 
+                                src="/FUTURE_FS_01/ProfilePic.png" 
                                 alt="Profile-Pic"
                             />
                         </div>
