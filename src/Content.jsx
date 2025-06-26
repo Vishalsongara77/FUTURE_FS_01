@@ -23,7 +23,7 @@ const Content = () => {
 
                 <div className="resume-icon-container"> 
                     <div className="resume-wrapper">
-                        <a href="/FUTURE_FS_01/vishal_resume.pdf" download
+                        <a href="/FUTURE_FS_01/vishal_resume.pdf" 
                             target="_balnk"
                             rel="noopener noreferrer"
                         >
