@@ -12,7 +12,7 @@ const Projects = () => {
 
         {/* Project 1 */}
         <div className="project-card">
-          <img src="./library.png" alt="Library Portal" className="project-img" />
+          <img src="/FUTURE_FS_01/library.png" alt="Library Portal" className="project-img" />
           <h3>Library Portal</h3>
           <p>
             A library Portal built using React.js, CSS, and SQL. Includes user-friendly components like book cards, navigation bar and guest access functionality.

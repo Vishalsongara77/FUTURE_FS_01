@@ -23,7 +23,7 @@ const Content = () => {
 
                 <div className="resume-icon-container"> 
                     <div className="resume-wrapper">
-                        <a href="./vishal_resume.pdf" download
+                        <a href="/FUTURE_FS_01/vishal_resume.pdf" download
                             target="_balnk"
                             rel="noopener noreferrer"
                         >
@@ -50,7 +50,7 @@ const Content = () => {
             </div>
             <div className="home-img-container">    
                 <img className="home-img animated-img"
-                    src="./portfolio.png"
+                    src="/FUTURE_FS_01/portfolio.png"
                     alt="Profile-Pic"
                 />
             </div>
