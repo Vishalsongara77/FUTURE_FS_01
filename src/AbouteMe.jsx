@@ -1,4 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import ProfilePic from "./assets/ProfilePic.png";
+
 const AboutMe = () => {
     return(
         <div id="about" className="about-container ">
@@ -10,7 +12,7 @@ const AboutMe = () => {
                     <div className="about-section-left">
                         <div className="photo-wrapper ">
                             <img className="about-img "
-                                src="/FUTURE_FS_01/ProfilePic.png" 
+                                src={ProfilePic} 
                                 alt="Profile-Pic"
                             />
                         </div>

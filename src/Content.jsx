@@ -1,6 +1,9 @@
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLinkedin , faGithub} from "@fortawesome/free-brands-svg-icons";
+import portfolio from "./assets/portfolio.svg";
+import vishal_resume from "./assets/vishal_resume.pdf";
+import Orb from './Orb.jsx';
 
 
 const Content = () => {
@@ -23,7 +26,7 @@ const Content = () => {
 
                 <div className="resume-icon-container"> 
                     <div className="resume-wrapper">
-                        <a href="/FUTURE_FS_01/vishal_resume.pdf" 
+                        <a href={vishal_resume}
                             target="_balnk"
                             rel="noopener noreferrer"
                         >
@@ -48,12 +51,16 @@ const Content = () => {
                     </div>
                 </div>
             </div>
-            <div className="home-img-container">    
-                <img className="home-img animated-img"
-                    src="/FUTURE_FS_01/portfolio.png"
-                    alt="Profile-Pic"
-                />
+              
+            <div className="home-img-container" style={{ width: '100%', height: '100%', position: 'relative' }}>
+            <Orb
+                hoverIntensity={0.5}
+                rotateOnHover={true}
+                hue={0}
+                forceHoverState={false}
+            />
             </div>
+            
         </div>
             
         </>

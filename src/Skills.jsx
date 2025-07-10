@@ -27,7 +27,7 @@ const Skills = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,        // show 5 at once
+    slidesToShow: 6,        
     slidesToScroll: 2,
     
     arrows: true,
