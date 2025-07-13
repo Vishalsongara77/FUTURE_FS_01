@@ -525,16 +525,17 @@ body::before {
 .project-card p {
     font-size: 16px;
     line-height: 1.4;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .project-links {
     display: flex;
-    justify-content: center;
-    gap: 12px;
+    flex-direction: row;
+    justify-content: space-between;
     position: absolute;
-    left: 0;
-    right: 0;
+    padding: 10px;
+    left: 16px;
+    right: 16px;
     bottom: 16px;
 }
 
