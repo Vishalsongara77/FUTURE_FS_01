@@ -1,34 +1,46 @@
-import { useEffect,useState } from "react";
+
+import { useEffect, useState } from "react";
+import { NAVIGATION_LINKS } from "./constants";
 
 const Header = () => {
-    
-    const [color,setColor] = useState(false);
-    const changeColor = () => {
-        if(window.scrollY >= 1){
-            setColor(true);
-        }else{
-            setColor(false);
-        }
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    window.addEventListener("scroll",changeColor);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    return(
-        <div className={color ? "header header-bg": "header"}>
-        
-            <nav className="nav-bar">
-                <ul className="navigation-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-                
-            <div className="connect"><a href="#contact"> Connect With Me</a></div>
-                
-        </div>
-    );
-}
-export default Header; 
+  return (
+    <header className={`header ${scrolled ? "header-bg" : ""}`}>
+      <nav className="nav-bar">
+        <ul className={`navigation-list ${isMenuOpen ? "active" : ""}`}>
+          {NAVIGATION_LINKS.map((link) => (
+            <li key={link.href} onClick={() => setIsMenuOpen(false)}>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="connect-wrapper">
+        <a href="#contact" className="connect">
+          Connect With Me
+        </a>
+      </div>
+
+      <div className={`hamburger ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
+        <span className="bar"></span>
+        <span className="bar"></span>
+        <span className="bar"></span>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

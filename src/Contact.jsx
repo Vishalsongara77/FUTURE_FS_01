@@ -1,10 +1,9 @@
+
 import { useState } from "react";
-import { faWhatsapp, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CONTACT_INFO } from "./constants";
 
 const Contact = () => {
-  const [status, setStatus] = useState("idle"); 
+  const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -13,12 +12,6 @@ const Contact = () => {
 
     const form = e.target;
     const formData = new FormData(form);
-
-    if (formData.get("_gotcha")) {
-      setStatus("error");
-      setMessage("Bot detected!");
-      return;
-    }
 
     try {
       const response = await fetch("https://formspree.io/f/xrbkyvpn", {
@@ -41,7 +34,7 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="contact">
+    <section id="contact" className="contact">
       <div className="contact-title">
         <h1>Get in touch</h1>
       </div>
@@ -54,48 +47,45 @@ const Contact = () => {
             can contact anytime.
           </p>
           <div className="contact-details">
-            <div className="contact-detail">
-              <FontAwesomeIcon icon={faGoogle} />
-              <p>vishal26songara@gmail.com</p>
-            </div>
-            <div className="contact-detail">
-              <FontAwesomeIcon icon={faWhatsapp} />
-              <p>+91 9460772077</p>
-            </div>
-            <div className="contact-detail">
-              <FontAwesomeIcon icon={faLocationDot} />
-              <p>Jaipur, Rajasthan, India</p>
-            </div>
+            {CONTACT_INFO.map((info, index) => (
+              <div key={index} className="contact-detail">
+                <a href={info.link} target="_blank" rel="noopener noreferrer">
+                   <info.icon />
+                </a>
+                <p>{info.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Enhanced Form */}
-        <form onSubmit={handleSubmit} className="contact-right">
-          {/* Formspree Key */}
+        <form onSubmit={handleSubmit} className="contact-right glass">
           <input type="hidden" name="_subject" value="New message from your portfolio" />
-
-          {/* Honeypot Anti-Spam Field */}
           <input type="text" name="_gotcha" style={{ display: "none" }} />
 
-          <label>Your Name</label>
-          <input type="text" name="name" placeholder="Enter your name" required />
+          <div className="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required />
+          </div>
 
-          <label>Your Email</label>
-          <input type="email" name="email" placeholder="Enter your email" required />
+          <div className="form-group">
+            <label>Your Email</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+          </div>
 
-          <label>Write your message here</label>
-          <textarea name="message" rows="8" placeholder="Enter your message" required></textarea>
+          <div className="form-group">
+            <label>Write your message here</label>
+            <textarea name="message" rows="6" placeholder="Enter your message" required></textarea>
+          </div>
 
-          <button type="submit" className="contact-submit" disabled={status === "sending"}>
+          <button type="submit" className="contact-submit connect" disabled={status === "sending"}>
             {status === "sending" ? "Sending..." : "Submit Now"}
           </button>
 
-            {/* error or sucess */}
           {status === "success" && <p className="success-msg">{message}</p>}
           {status === "error" && <p className="error-msg">{message}</p>}
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
