@@ -24,6 +24,13 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
 }
 
 body {
@@ -62,9 +69,10 @@ body {
 
 /* Layout */
 section {
-  padding: 100px 10%;
+  padding: 150px 10%; /* Increased vertical padding from 100px to 150px */
   max-width: 1400px;
   margin: 0 auto;
+  scroll-margin-top: 100px; /* Ensures fixed header doesn't cover section title when navigating */
 }
 
 /* Header */
@@ -109,12 +117,19 @@ section {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary-gradient);
+  background: white;
   transition: width 0.3s;
 }
 
 .navigation-list li a:hover::after {
   width: 100%;
+}
+
+.logo a {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
 }
 
 .connect {
@@ -155,7 +170,7 @@ section {
   justify-content: flex-start;
   min-height: 85vh;
   gap: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 50px; /* Increased from 20px */
 }
 
 .home-content h1 {
@@ -167,20 +182,23 @@ section {
 .home-text {
   font-size: 48px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .word-switch {
   display: inline-block;
   height: 1.2em;
   overflow: hidden;
-  vertical-align: bottom;
   position: relative;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .word {
   position: absolute;
   left: 0;
+  top: 0; /* Resetting to 0 to check alignment with center flex */
   opacity: 0;
   animation: fadeWords 9s infinite;
 }
@@ -594,7 +612,7 @@ section {
   .home { 
     flex-direction: column; 
     text-align: left; 
-    padding: 100px 5% 20px; 
+    padding: 100px 5% 100px; /* Increased bottom padding for mobile */
     gap: 15px;
     align-items: flex-start;
     justify-content: flex-start;
@@ -610,7 +628,7 @@ section {
   }
   
   .home-content h1 { font-size: 38px; }
-  .home-text { font-size: 24px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+  .home-text { font-size: 24px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
   .word-switch { 
     display: inline-block;
     min-width: 220px; /* Fits "Software Developer" on mobile */
@@ -662,7 +680,7 @@ section {
 }
 
 @media (max-width: 480px) {
-  .home { padding: 80px 5% 10px; }
+  .home { padding: 150px 5% 100px; }
   .home-content h1 { font-size: 28px; }
   .home-text { font-size: 18px; gap: 5px; }
   .word-switch { min-width: 170px; }

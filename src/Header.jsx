@@ -18,6 +18,9 @@ const Header = () => {
 
   return (
     <header className={`header ${scrolled ? "header-bg" : ""}`}>
+      <div className="logo">
+        <a href="#home">Portfolio</a>
+      </div>
       <nav className="nav-bar">
         <ul className={`navigation-list ${isMenuOpen ? "active" : ""}`}>
           {NAVIGATION_LINKS.map((link) => (
